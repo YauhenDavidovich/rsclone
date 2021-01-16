@@ -1,5 +1,7 @@
 enum TextureKeys {
-    Background = 'background',
+    MainBackground = 'background',
+    RoadBackground = 'road_background',
+    GrassBackground = 'grass_background',
     RunningMan = 'hero'
 }
 

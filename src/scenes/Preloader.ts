@@ -9,12 +9,16 @@ export default class Preloader extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image(TextureKeys.Background, 'city/bg_repeat_340x640.png')
+        this.load.image(TextureKeys.MainBackground, 'city/bg_city_main.png')
+        this.load.image(TextureKeys.RoadBackground, 'city/bg_repeat_road.png')
+        this.load.image(TextureKeys.GrassBackground, 'city/bg_repeat_grass.png')
+
         this.load.atlas(
             TextureKeys.RunningMan,
             'characters/hero/run.png',
             'characters//hero/run.json'
         )
+
 
     }
 
