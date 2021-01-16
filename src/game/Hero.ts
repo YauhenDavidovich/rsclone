@@ -11,5 +11,6 @@ export default class Hero extends Phaser.GameObjects.Container {
             .setOrigin(0.5, 1)
             .play(AnimationKeys.RunningManRun)
         this.add(hero)
+        scene.physics.add.existing(this)
     }
 }
