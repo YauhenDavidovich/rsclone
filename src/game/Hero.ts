@@ -12,5 +12,9 @@ export default class Hero extends Phaser.GameObjects.Container {
             .play(AnimationKeys.RunningManRun)
         this.add(hero)
         scene.physics.add.existing(this)
+
+        const body = this.body as Phaser.Physics.Arcade.Body
+        body.setSize(hero.width, hero.height)
+        body.setOffset(hero.width * -0.5, -hero.height)
     }
 }

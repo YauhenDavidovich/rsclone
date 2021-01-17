@@ -5,6 +5,9 @@ import TextureKeys from "~/consts/TextureKeys";
 import Hero from "~/game/Hero";
 
 export default class Game extends Phaser.Scene {
+    constructor() {
+        super(SceneKeys.Game)
+    }
 
     private backgroundRoad!: Phaser.GameObjects.TileSprite
 
@@ -20,7 +23,6 @@ export default class Game extends Phaser.Scene {
             .setScrollFactor(0)
         this.add.image(0, 70,  TextureKeys.GrassBackground).setOrigin(0)
             .setScrollFactor(0.12)
-        console.log("Im here")
 
 
 
@@ -36,7 +38,7 @@ export default class Game extends Phaser.Scene {
 
 
         const hero = new Hero(this, width * 0.5, height - 50)
-        this.add.existing(hero)
+         this.add.existing(hero)
 
 
 
@@ -59,5 +61,7 @@ export default class Game extends Phaser.Scene {
 update(t: number, dt: number) {
         this.backgroundRoad.setTilePosition(this.cameras.main.scrollX)
 
-    }
+
+
+}
 }
