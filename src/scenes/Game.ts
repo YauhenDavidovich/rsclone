@@ -37,7 +37,7 @@ export default class Game extends Phaser.Scene {
             .setScrollFactor(0, 0)
 
 
-        const hero = new Hero(this, width * 0.5, height - 50)
+        const hero = new Hero(this, width * 0.5, height - 30)
          this.add.existing(hero)
 
 
