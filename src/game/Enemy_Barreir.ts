@@ -16,8 +16,20 @@ export default class EnemyBarreir extends Phaser.GameObjects.Container {
 
         this.add(enemyBarreir)
 
+        //making it dangerous
+        scene.physics.add.existing(this, true)
+         const body = this.body as Phaser.Physics.Arcade.StaticBody
 
-        // get a CursorKeys instance
+
+         body.setSize(enemyBarreir.width, enemyBarreir.height, true)
+         body.setOffset(enemyBarreir.width * -0.5, enemyBarreir.height * -0.5)
+
+        // reposition body
+         body.position.x = this.x + body.offset.x
+         body.position.y = this.y
+
+
+
 
 
     }
