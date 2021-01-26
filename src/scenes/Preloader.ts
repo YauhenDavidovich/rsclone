@@ -11,7 +11,14 @@ export default class Preloader extends Phaser.Scene {
     preload() {
         this.load.image(TextureKeys.MainBackground, 'city/bg_city_main.png')
         this.load.image(TextureKeys.RoadBackground, 'city/bg_repeat_road.png')
-        this.load.image(TextureKeys.GrassBackground, 'city/bg_repeat_grass.png')
+        this.load.image(TextureKeys.NewBorBackground, 'city/nb_bg.png')
+        this.load.image(TextureKeys.UrucheiBackground, 'city/uruchei_bg.png')
+
+        this.load.atlas(
+            TextureKeys.EnemyBarrerier,
+            'characters/enemy_barreir/barreir.png',
+            'characters/enemy_barreir/barreir.json'
+            )
 
         this.load.atlas(
             TextureKeys.RunningMan,
@@ -36,6 +43,21 @@ export default class Preloader extends Phaser.Scene {
             frameRate: 15,
             repeat: -1 // -1 to loop forever
         })
+
+        this.anims.create({
+            key: AnimationKeys.EnemyBarreirAnimation, // name of this animation
+
+            frames: this.anims.generateFrameNames('enemy_barreir', {
+                start: 1,
+                end: 4,
+                prefix: 'barreir_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 5,
+            repeat: -1 // -1 to loop forever
+        })
+
 
         this.scene.start(SceneKeys.Game)
     }

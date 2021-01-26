@@ -1,5 +1,6 @@
 enum AnimationKeys {
-    RunningManRun = 'hero-run'
+    RunningManRun = 'hero-run',
+    EnemyBarreirAnimation = 'barreir_setup'
 }
 
 export default AnimationKeys
