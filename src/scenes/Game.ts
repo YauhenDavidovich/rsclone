@@ -12,28 +12,29 @@ export default class Game extends Phaser.Scene {
 
     private backgroundRoad!: Phaser.GameObjects.TileSprite
     private enemyBarreir: EnemyBarreir
+
     private wrapEemyBarreir() {
         const scrollX = this.cameras.main.scrollX
-         const rightEdge = scrollX + this.scale.width
+        const rightEdge = scrollX + this.scale.width
 
-         // body variable with specific physics body type
+        // body variable with specific physics body type
         const body = this.enemyBarreir.body as
             Phaser.Physics.Arcade.StaticBody
 
-         // use the body's width
-         const width = body.width
-         if (this.enemyBarreir.x + width < scrollX)
-        {
-             this.enemyBarreir.x = Phaser.Math.Between(
-                 rightEdge + width,
-                 rightEdge + width + 1000
-             )
+        // use the body's width
+        const width = body.width
+        if (this.enemyBarreir.x + width < scrollX) {
+            this.enemyBarreir.x = Phaser.Math.Between(
+                rightEdge + width,
+                rightEdge + width + 1000
+            )
 
-             // set the physics body's position
-             // add body.offset.x to account for x offset
-             body.position.x = this.enemyBarreir.x + body.offset.x
-            body.position.y = this.enemyBarreir.y
-             }}
+            // set the physics body's position
+            // add body.offset.x to account for x offset
+            body.position.x = this.enemyBarreir.x + body.offset.x
+            body.position.y = 330
+        }
+    }
 
 
     create() {
@@ -83,19 +84,18 @@ export default class Game extends Phaser.Scene {
 
 
         this.physics.add.overlap(
-             this.enemyBarreir,
-             hero,
-             this.handleOverlapLaser,
-             undefined,
-             this
-         )
-}
+            this.enemyBarreir,
+            hero,
+            this.handleOverlapLaser,
+            undefined,
+            this
+        )
+    }
 
     private handleOverlapLaser(
         obj1: Phaser.GameObjects.GameObject,
         obj2: Phaser.GameObjects.GameObject
-    )
-    {
+    ) {
         console.log('overlap!')
     }
 

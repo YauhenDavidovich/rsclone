@@ -18,15 +18,18 @@ export default class EnemyBarreir extends Phaser.GameObjects.Container {
 
         //making it dangerous
         scene.physics.add.existing(this, true)
-         const body = this.body as Phaser.Physics.Arcade.StaticBody
+        const body = this.body as Phaser.Physics.Arcade.StaticBody
+        const width = enemyBarreir.displayWidth
+        const height = enemyBarreir.displayHeight
+
+         body.setSize(width, height)
+        body.setOffset(-width * 0.5, -height )
 
 
-         body.setSize(enemyBarreir.width, enemyBarreir.height, true)
-         body.setOffset(enemyBarreir.width * -0.5, enemyBarreir.height * -0.5)
-
-        // reposition body
+         // reposition body
          body.position.x = this.x + body.offset.x
-         body.position.y = this.y
+         body.position.y = 330
+
 
 
 
