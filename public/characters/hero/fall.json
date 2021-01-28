@@ -1,0 +1,320 @@
+{
+	"textures": [
+		{
+			"image": "fall.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 497,
+				"h": 616
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fall_4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 71,
+						"y": 59,
+						"w": 163,
+						"h": 168
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 163,
+						"h": 168
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 74,
+						"y": 59,
+						"w": 154,
+						"h": 161
+					},
+					"frame": {
+						"x": 1,
+						"y": 171,
+						"w": 154,
+						"h": 161
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 64,
+						"y": 73,
+						"w": 166,
+						"h": 145
+					},
+					"frame": {
+						"x": 166,
+						"y": 1,
+						"w": 166,
+						"h": 145
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 82,
+						"y": 64,
+						"w": 144,
+						"h": 163
+					},
+					"frame": {
+						"x": 1,
+						"y": 334,
+						"w": 144,
+						"h": 163
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 104,
+						"w": 180,
+						"h": 116
+					},
+					"frame": {
+						"x": 1,
+						"y": 499,
+						"w": 180,
+						"h": 116
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 68,
+						"w": 161,
+						"h": 149
+					},
+					"frame": {
+						"x": 334,
+						"y": 1,
+						"w": 161,
+						"h": 149
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 64,
+						"y": 78,
+						"w": 165,
+						"h": 145
+					},
+					"frame": {
+						"x": 166,
+						"y": 148,
+						"w": 165,
+						"h": 145
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 64,
+						"y": 83,
+						"w": 163,
+						"h": 136
+					},
+					"frame": {
+						"x": 333,
+						"y": 152,
+						"w": 163,
+						"h": 136
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 66,
+						"y": 104,
+						"w": 181,
+						"h": 117
+					},
+					"frame": {
+						"x": 157,
+						"y": 295,
+						"w": 181,
+						"h": 117
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 67,
+						"w": 135,
+						"h": 159
+					},
+					"frame": {
+						"x": 340,
+						"y": 290,
+						"w": 135,
+						"h": 159
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 91,
+						"y": 66,
+						"w": 135,
+						"h": 160
+					},
+					"frame": {
+						"x": 183,
+						"y": 414,
+						"w": 135,
+						"h": 160
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fall_10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 65,
+						"y": 93,
+						"w": 167,
+						"h": 141
+					},
+					"frame": {
+						"x": 320,
+						"y": 451,
+						"w": 167,
+						"h": 141
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:50a27429d809dd24cc2017ca5bf7a014:8af841025d3e3cc929c12eee35607d1b:10d8948b900fb843ab7e2f3ae32da3a2$"
+	}
+}

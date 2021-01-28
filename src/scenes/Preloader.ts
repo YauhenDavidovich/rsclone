@@ -4,6 +4,7 @@ import SceneKeys from "~/consts/SceneKeys";
 import AnimationKeys from "~/consts/AnimationKeys";
 
 export default class Preloader extends Phaser.Scene {
+    private sonido: Phaser.Sound.BaseSound;
     constructor() {
         super(SceneKeys.Preloader)
     }
@@ -26,14 +27,21 @@ export default class Preloader extends Phaser.Scene {
             'characters//hero/run.json'
         )
 
+        this.load.atlas(
+            TextureKeys.JumpingMan,
+            'characters/hero/jump.png',
+            'characters//hero/jump.json'
+        )
 
+        this.load.audio('sonido', '/audio/run.mp3');
+        
     }
 
     create() {
         this.anims.create({
             key: AnimationKeys.RunningManRun, // name of this animation
 
-            frames: this.anims.generateFrameNames('hero', {
+            frames: this.anims.generateFrameNames('hero_run', {
                 start: 1,
                 end: 8,
                 prefix: 'run_',
@@ -58,7 +66,25 @@ export default class Preloader extends Phaser.Scene {
             repeat: -1 // -1 to loop forever
         })
 
+        this.anims.create({
+            key: AnimationKeys.RunningManJump, // name of this animation
+
+            frames: this.anims.generateFrameNames('hero_jump', {
+                start: 1,
+                end: 5,
+                prefix: 'jump_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 5,
+            repeat: -1 // -1 to loop forever
+        })
+        this.sonido = this.sound.add('sonido');
+        this.sonido.loop = true;
+        this.sonido.play()
 
         this.scene.start(SceneKeys.Game)
     }
+
+
 }

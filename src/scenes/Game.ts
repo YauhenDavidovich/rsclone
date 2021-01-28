@@ -6,6 +6,7 @@ import TextureKeys from "~/consts/TextureKeys";
 import Hero from "~/game/Hero";
 
 export default class Game extends Phaser.Scene {
+
     constructor() {
         super(SceneKeys.Game)
     }
@@ -42,6 +43,8 @@ export default class Game extends Phaser.Scene {
         // store the width and height of the game screen
         const width = this.scale.width
         const height = this.scale.height
+
+
 
         this.add.image(0, 0, TextureKeys.MainBackground).setOrigin(0)
             .setScrollFactor(0)
@@ -90,6 +93,8 @@ export default class Game extends Phaser.Scene {
             undefined,
             this
         )
+
+
     }
 
     private handleOverlapLaser(

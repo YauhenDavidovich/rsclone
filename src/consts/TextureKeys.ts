@@ -9,7 +9,8 @@ enum TextureKeys {
     BatuBackground = 'batu_background',
     KastruchnickBackground = 'kastruchnick_background',
     EnemyBarrerier = 'enemy_barreir',
-    RunningMan = 'hero'
+    RunningMan = 'hero_run',
+    JumpingMan = 'hero_jump'
 }
 
 export default TextureKeys
