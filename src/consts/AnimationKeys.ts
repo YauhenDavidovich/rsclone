@@ -6,6 +6,7 @@ enum AnimationKeys {
     EnemyPredatorAnimation = 'predator_setup',
     EnemyDronAnimation = 'dron_setup',
 
+
 }
 
 export default AnimationKeys

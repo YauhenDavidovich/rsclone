@@ -140,7 +140,9 @@ export default class Game extends Phaser.Scene {
         obj1: Phaser.GameObjects.GameObject,
         obj2: Phaser.GameObjects.GameObject,
     ) {
-        console.log('overlap!')
+        const hero = obj2 as Hero
+
+        hero.kill()
     }
 
 

@@ -41,13 +41,19 @@ export default class Preloader extends Phaser.Scene {
         )
 
         this.load.atlas(
+            TextureKeys.DeadMan,
+            'characters/hero/fall.png',
+            'characters//hero/fall.json'
+        )
+
+        this.load.atlas(
             TextureKeys.JumpingMan,
             'characters/hero/jump.png',
             'characters//hero/jump.json'
         )
 
         this.load.audio('sonido', '/audio/run.mp3');
-        
+
     }
 
     create() {
@@ -104,7 +110,7 @@ export default class Preloader extends Phaser.Scene {
                 zeroPad: 1,
                 suffix: '.png'
             }),
-            frameRate: 10,
+            frameRate: 5,
             repeat: -1 // -1 to loop forever
         })
 
@@ -123,12 +129,26 @@ export default class Preloader extends Phaser.Scene {
             frameRate: 5,
             repeat: -1 // -1 to loop forever
         })
+
+        this.anims.create({
+            key: AnimationKeys.RunningManFall, // name of this animation
+
+            frames: this.anims.generateFrameNames('hero_fall', {
+                start: 1,
+                end: 12,
+                prefix: 'fall_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 5,
+            repeat: 1 // -1 to loop forever
+        })
+
+
         this.sonido = this.sound.add('sonido');
         this.sonido.loop = true;
         // this.sonido.play()
 
         this.scene.start(SceneKeys.Game)
     }
-
-
 }

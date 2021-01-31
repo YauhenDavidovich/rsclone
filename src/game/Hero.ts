@@ -3,10 +3,18 @@ import Phaser from 'phaser'
 import TextureKeys from '../consts/TextureKeys'
 import AnimationKeys from '../consts/AnimationKeys'
 
+enum HeroState
+{
+    Running,
+    Killed,
+    Dead
+}
+
 export default class Hero extends Phaser.GameObjects.Container {
     private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     private hero: Phaser.GameObjects.Sprite
     private jumptimer = 0;
+    private heroState = HeroState.Running
 
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
@@ -30,32 +38,68 @@ export default class Hero extends Phaser.GameObjects.Container {
         this.cursors = scene.input.keyboard.createCursorKeys()
 
     }
+    kill()
+    {
+        if (this.heroState !== HeroState.Running)
+        {
+            return
+        }
 
+        this.heroState = HeroState.Killed
+
+        this.hero.play(AnimationKeys.RunningManFall)
+
+        const body = this.body as Phaser.Physics.Arcade.Body
+        body.setAccelerationY(0)
+        body.setVelocity(1000, 0)
+    }
 
     preUpdate() {
 
         const body = this.body as Phaser.Physics.Arcade.Body
-
-        if (body.blocked.down && this.jumptimer === 0) {
-
-
-            this.hero.play(AnimationKeys.RunningManRun, true)
-        }
-        if (this.cursors.space.isDown) {
-            if (body.blocked.down && this.jumptimer === 0) {
-                // jump is allowed to start
-                this.jumptimer = 1;
-                body.setVelocityY(-270)
-                this.hero.play(AnimationKeys.RunningManJump, true)
-            } else if (this.jumptimer > 0 && this.jumptimer < 31) {
-                // keep jumping higher
-                ++this.jumptimer;
-                body.setVelocityY(-270 - (this.jumptimer * 1));
+        switch (this.heroState)
+        {
+            case HeroState.Running: {
+                if (body.blocked.down && this.jumptimer === 0) {
+                    this.hero.play(AnimationKeys.RunningManRun, true)
+                }
+                if (this.cursors.space.isDown) {
+                    if (body.blocked.down && this.jumptimer === 0) {
+                        // jump is allowed to start
+                        this.jumptimer = 1;
+                        body.setVelocityY(-270)
+                        this.hero.play(AnimationKeys.RunningManJump, true)
+                    } else if (this.jumptimer > 0 && this.jumptimer < 31) {
+                        // keep jumping higher
+                        ++this.jumptimer;
+                        body.setVelocityY(-270 - (this.jumptimer * 1));
+                    }
+                } else {
+                    // jump button not being pressed, reset jump timer
+                    this.jumptimer = 0;
+                }
+                break
             }
-        } else {
-            // jump button not being pressed, reset jump timer
-            this.jumptimer = 0;
+            case HeroState.Killed:
+            {
+                body.velocity.x *= 0.99
+                if (body.velocity.x <= 5)
+                {
+                    this.heroState = HeroState.Dead
+                }
+                break
+            }
+
+            case HeroState.Dead:
+            {
+
+                body.setVelocity(0, 0)
+                break
+            }
+
         }
+
+
 
     }
 }
