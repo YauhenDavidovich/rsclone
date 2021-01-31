@@ -44,6 +44,24 @@ export default class Game extends Phaser.Scene {
         }
     }
 
+    private wrapDron()
+    {
+        const scrollX = this.cameras.main.scrollX
+        const rightEdge = scrollX + this.scale.width
+
+        const body = this.dron.body as Phaser.Physics.Arcade.StaticBody
+
+        const width = body.width
+        if (this.dron.x + width < scrollX)
+        {
+            this.dron.x = Phaser.Math.Between(rightEdge + width, rightEdge + width + 1000)
+            this.dron.y = Phaser.Math.Between(30, 100)
+
+            body.position.x = this.dron.x + body.offset.x
+            body.position.y = this.dron.y + 100
+        }
+    }
+
     create() {
 
         // store the width and height of the game screen
@@ -132,7 +150,7 @@ export default class Game extends Phaser.Scene {
         // this.wrapEnemyPredator()
         this.wrapEnemyBarreir()
         // this.wrapEnemy()
-        // this.wrapDrons()
+        this.wrapDron()
 
 
     }
