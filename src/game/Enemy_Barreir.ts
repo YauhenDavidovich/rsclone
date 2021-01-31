@@ -4,15 +4,12 @@ import AnimationKeys from "~/consts/AnimationKeys";
 
 export default class EnemyBarreir extends Phaser.GameObjects.Container {
 
-
-
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y)
 
         const enemyBarreir = scene.add.sprite(0, 600, TextureKeys.EnemyBarrerier)
             .setOrigin(0.5, 1)
             .play(AnimationKeys.EnemyBarreirAnimation)
-
 
         this.add(enemyBarreir)
 
@@ -22,21 +19,12 @@ export default class EnemyBarreir extends Phaser.GameObjects.Container {
         const width = enemyBarreir.displayWidth
         const height = enemyBarreir.displayHeight
 
-         body.setSize(width, height)
+         body.setSize(width, height-70)
         body.setOffset(-width * 0.5, -height )
 
 
          // reposition body
-         body.position.x = this.x + body.offset.x
-         body.position.y = 330
-
-
-
-
-
-
+          body.position.x = this.x + body.offset.x
+          body.position.y = 450
     }
-
-
-
 }

@@ -22,6 +22,19 @@ export default class Preloader extends Phaser.Scene {
             )
 
         this.load.atlas(
+            TextureKeys.EnemyPredator,
+            'characters/enemy_barreir/predator.png',
+            'characters/enemy_barreir/predator.json'
+        )
+
+        this.load.atlas(
+            TextureKeys.EnemyDron,
+            'characters/enemy_barreir/dron1.png',
+            'characters/enemy_barreir/dron1.json'
+        )
+
+
+        this.load.atlas(
             TextureKeys.RunningMan,
             'characters/hero/run.png',
             'characters//hero/run.json'
@@ -67,6 +80,37 @@ export default class Preloader extends Phaser.Scene {
         })
 
         this.anims.create({
+            key: AnimationKeys.EnemyPredatorAnimation, // name of this animation
+
+            frames: this.anims.generateFrameNames('enemy_predator', {
+                start: 1,
+                end: 3,
+                prefix: 'predator_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 3,
+            repeat: -1 // -1 to loop forever
+        })
+
+
+        this.anims.create({
+            key: AnimationKeys.EnemyDronAnimation, // name of this animation
+
+            frames: this.anims.generateFrameNames('enemy_dron', {
+                start: 1,
+                end: 2,
+                prefix: 'dron1_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 10,
+            repeat: -1 // -1 to loop forever
+        })
+
+
+
+        this.anims.create({
             key: AnimationKeys.RunningManJump, // name of this animation
 
             frames: this.anims.generateFrameNames('hero_jump', {
@@ -81,7 +125,7 @@ export default class Preloader extends Phaser.Scene {
         })
         this.sonido = this.sound.add('sonido');
         this.sonido.loop = true;
-        this.sonido.play()
+        // this.sonido.play()
 
         this.scene.start(SceneKeys.Game)
     }

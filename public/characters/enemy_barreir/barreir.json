@@ -4,8 +4,8 @@
 			"image": "barreir.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 231,
-				"h": 1208
+				"w": 223,
+				"h": 1168
 			},
 			"scale": 1,
 			"frames": [
@@ -14,20 +14,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					}
 				},
 				{
@@ -35,20 +35,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"frame": {
 						"x": 1,
-						"y": 303,
-						"w": 229,
-						"h": 300
+						"y": 293,
+						"w": 221,
+						"h": 290
 					}
 				},
 				{
@@ -56,20 +56,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"frame": {
 						"x": 1,
-						"y": 605,
-						"w": 229,
-						"h": 300
+						"y": 585,
+						"w": 221,
+						"h": 290
 					}
 				},
 				{
@@ -77,20 +77,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 229,
-						"h": 300
+						"w": 221,
+						"h": 290
 					},
 					"frame": {
 						"x": 1,
-						"y": 907,
-						"w": 229,
-						"h": 300
+						"y": 877,
+						"w": 221,
+						"h": 290
 					}
 				}
 			]
@@ -99,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:61392aabf57a07e08109753b8b1836fa:3379054c25b1eb24c4e562853b2b2cda:08bec385e7dd5a7ac90ad1af650d3b81$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ddd428a4755872f662ac5938642ecf15:b809b4c2cf8d2849da0dc615cf1db079:08bec385e7dd5a7ac90ad1af650d3b81$"
 	}
 }

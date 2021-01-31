@@ -9,6 +9,8 @@ enum TextureKeys {
     BatuBackground = 'batu_background',
     KastruchnickBackground = 'kastruchnick_background',
     EnemyBarrerier = 'enemy_barreir',
+    EnemyPredator = 'enemy_predator',
+    EnemyDron = 'enemy_dron',
     RunningMan = 'hero_run',
     JumpingMan = 'hero_jump'
 }

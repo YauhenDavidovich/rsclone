@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "dron1.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 274,
+				"h": 99
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "dron1_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 135,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 135,
+						"h": 97
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 135,
+						"h": 97
+					}
+				},
+				{
+					"filename": "dron1_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 135,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 135,
+						"h": 97
+					},
+					"frame": {
+						"x": 138,
+						"y": 1,
+						"w": 135,
+						"h": 97
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:a8f6df586abc5f81f71c66a3e47f69b1:4dccba97837ff8eaca5889bdd6622a20:d7fa2143f6379253c3725f24bb86e3ac$"
+	}
+}

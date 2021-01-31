@@ -2,19 +2,26 @@ import Phaser from 'phaser'
 import SceneKeys from "~/consts/SceneKeys";
 import AnimationKeys from "~/consts/AnimationKeys";
 import EnemyBarreir from '../game/Enemy_Barreir'
+import EnemyPredator from '../game/Predator'
 import TextureKeys from "~/consts/TextureKeys";
 import Hero from "~/game/Hero";
+import EnemyDron from "~/game/Dron";
+
 
 export default class Game extends Phaser.Scene {
+
+
+    private backgroundRoad!: Phaser.GameObjects.TileSprite
+    private enemyBarreir!: EnemyBarreir
+    private enemyPredator!: EnemyPredator
+    private dron!: EnemyDron;
+
 
     constructor() {
         super(SceneKeys.Game)
     }
 
-    private backgroundRoad!: Phaser.GameObjects.TileSprite
-    private enemyBarreir: EnemyBarreir
-
-    private wrapEemyBarreir() {
+    private wrapEnemyBarreir() {
         const scrollX = this.cameras.main.scrollX
         const rightEdge = scrollX + this.scale.width
 
@@ -33,10 +40,9 @@ export default class Game extends Phaser.Scene {
             // set the physics body's position
             // add body.offset.x to account for x offset
             body.position.x = this.enemyBarreir.x + body.offset.x
-            body.position.y = 330
+            body.position.y = 450
         }
     }
-
 
     create() {
 
@@ -45,10 +51,9 @@ export default class Game extends Phaser.Scene {
         const height = this.scale.height
 
 
-
         this.add.image(0, 0, TextureKeys.MainBackground).setOrigin(0)
             .setScrollFactor(0)
-        this.add.image(200, 110, TextureKeys.NewBorBackground).setOrigin(0)
+        this.add.image(600, 110, TextureKeys.NewBorBackground).setOrigin(0)
             .setScrollFactor(0.32)
         this.add.image(1300, 110, TextureKeys.UrucheiBackground).setOrigin(0)
             .setScrollFactor(0.32)
@@ -68,7 +73,15 @@ export default class Game extends Phaser.Scene {
         this.add.existing(this.enemyBarreir)
 
 
-        const hero = new Hero(this, width * 0.5, height - 30)
+        this.dron = new EnemyDron(this, 1200, 30)
+        this.add.existing(this.dron)
+
+
+        this.enemyPredator = new EnemyPredator(this, 1900, 30)
+        this.add.existing(this.enemyPredator)
+
+
+        const hero = new Hero(this, width * 0.5, height-30)
         this.add.existing(hero)
 
 
@@ -79,7 +92,7 @@ export default class Game extends Phaser.Scene {
 
         this.physics.world.setBounds(
             0, 0, // x, y
-            Number.MAX_SAFE_INTEGER, height - 30 // width, height
+            Number.MAX_SAFE_INTEGER, height - 90 // width, height
         )
 
         this.cameras.main.startFollow(hero)
@@ -87,9 +100,17 @@ export default class Game extends Phaser.Scene {
 
 
         this.physics.add.overlap(
+            this.enemyPredator,
+            hero,
+            this.handleOverlapBarrreir,
+            undefined,
+            this
+        )
+
+        this.physics.add.overlap(
             this.enemyBarreir,
             hero,
-            this.handleOverlapLaser,
+            this.handleOverlapBarrreir,
             undefined,
             this
         )
@@ -97,9 +118,9 @@ export default class Game extends Phaser.Scene {
 
     }
 
-    private handleOverlapLaser(
+    private handleOverlapBarrreir(
         obj1: Phaser.GameObjects.GameObject,
-        obj2: Phaser.GameObjects.GameObject
+        obj2: Phaser.GameObjects.GameObject,
     ) {
         console.log('overlap!')
     }
@@ -107,7 +128,11 @@ export default class Game extends Phaser.Scene {
 
     update(t: number, dt: number) {
         this.backgroundRoad.setTilePosition(this.cameras.main.scrollX)
-        this.wrapEemyBarreir()
+        // this.wrapEnemyBarreir()
+        // this.wrapEnemyPredator()
+        this.wrapEnemyBarreir()
+        // this.wrapEnemy()
+        // this.wrapDrons()
 
 
     }
