@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 
 import TextureKeys from '../consts/TextureKeys'
 import AnimationKeys from '../consts/AnimationKeys'
+import SceneKeys from "~/consts/SceneKeys";
 
 enum HeroState
 {
@@ -94,6 +95,8 @@ export default class Hero extends Phaser.GameObjects.Container {
             {
 
                 body.setVelocity(0, 0)
+                this.scene.scene.run(SceneKeys.GameOver)
+
                 break
             }
 
