@@ -141,7 +141,7 @@ export default class Preloader extends Phaser.Scene {
                 suffix: '.png'
             }),
             frameRate: 5,
-            repeat: 1 // -1 to loop forever
+            repeat: 0 // -1 to loop forever
         })
 
 

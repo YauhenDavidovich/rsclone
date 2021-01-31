@@ -18,8 +18,8 @@ export default class EnemyDron extends Phaser.GameObjects.Container {
         const width = enemyDron.displayWidth
         const height = enemyDron.displayHeight
 
-        body.setSize(width, height)
-        body.setOffset(-width * 0.5, height  )
+        body.setSize(width - 20, height -40)
+        body.setOffset(-width * 0.4, -height + 20  )
 
 
         // reposition body

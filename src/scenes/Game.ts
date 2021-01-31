@@ -34,7 +34,7 @@ export default class Game extends Phaser.Scene {
         if (this.enemyBarreir.x + width < scrollX) {
             this.enemyBarreir.x = Phaser.Math.Between(
                 rightEdge + width,
-                rightEdge + width + 1000
+                rightEdge + width + 2000
             )
 
             // set the physics body's position
@@ -43,6 +43,41 @@ export default class Game extends Phaser.Scene {
             body.position.y = 450
         }
     }
+
+
+    private wrapEnemyPredator() {
+        const scrollX = this.cameras.main.scrollX
+        const rightEdge = scrollX + this.scale.width
+
+        // body variable with specific physics body type
+        const body = this.enemyPredator.body as
+            Phaser.Physics.Arcade.StaticBody
+
+        // use the body's width
+        const width = body.width
+        if (this.enemyPredator.x + width < scrollX) {
+            this.enemyPredator.x = Phaser.Math.Between(
+                rightEdge + width + 1000,
+                rightEdge + width + 3500
+            )
+
+            // set the physics body's position
+            // add body.offset.x to account for x offset
+            body.position.x = this.enemyPredator.x + body.offset.x
+            body.position.y = 450
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     private wrapDron()
     {
@@ -55,7 +90,7 @@ export default class Game extends Phaser.Scene {
         if (this.dron.x + width < scrollX)
         {
             this.dron.x = Phaser.Math.Between(rightEdge + width, rightEdge + width + 1000)
-            this.dron.y = Phaser.Math.Between(30, 100)
+            this.dron.y = Phaser.Math.Between(30, 80)
 
             body.position.x = this.dron.x + body.offset.x
             body.position.y = this.dron.y + 100
@@ -91,11 +126,11 @@ export default class Game extends Phaser.Scene {
         this.add.existing(this.enemyBarreir)
 
 
-        this.dron = new EnemyDron(this, 1200, 30)
+        this.dron = new EnemyDron(this, 1400, 30)
         this.add.existing(this.dron)
 
 
-        this.enemyPredator = new EnemyPredator(this, 1900, 30)
+        this.enemyPredator = new EnemyPredator(this, 2000, 30)
         this.add.existing(this.enemyPredator)
 
 
@@ -126,6 +161,14 @@ export default class Game extends Phaser.Scene {
         )
 
         this.physics.add.overlap(
+            this.dron,
+            hero,
+            this.handleOverlapBarrreir,
+            undefined,
+            this
+        )
+
+        this.physics.add.overlap(
             this.enemyBarreir,
             hero,
             this.handleOverlapBarrreir,
@@ -148,10 +191,10 @@ export default class Game extends Phaser.Scene {
 
     update(t: number, dt: number) {
         this.backgroundRoad.setTilePosition(this.cameras.main.scrollX)
-        // this.wrapEnemyBarreir()
-        // this.wrapEnemyPredator()
+
+        this.wrapEnemyPredator()
         this.wrapEnemyBarreir()
-        // this.wrapEnemy()
+        // this.wrapEnemies()
         this.wrapDron()
 
 

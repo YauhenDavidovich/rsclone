@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import TextureKeys from "~/consts/TextureKeys";
 import AnimationKeys from "~/consts/AnimationKeys";
 
+
 export default class EnemyPredator extends Phaser.GameObjects.Container {
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
@@ -19,12 +20,12 @@ export default class EnemyPredator extends Phaser.GameObjects.Container {
         const width = enemyPredator.displayWidth
         const height = enemyPredator.displayHeight
 
-        body.setSize(width, height)
+        body.setSize(width-30, height-70)
         body.setOffset(-width * 0.5, -height )
 
 
         // reposition body
         body.position.x = this.x + body.offset.x
-        body.position.y = 330
+        body.position.y = 450
     }
 }
