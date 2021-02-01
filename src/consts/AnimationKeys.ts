@@ -5,6 +5,7 @@ enum AnimationKeys {
     EnemyBarreirAnimation = 'barreir_setup',
     EnemyPredatorAnimation = 'predator_setup',
     EnemyDronAnimation = 'dron_setup',
+    PrizeAnimation = 'prize_animation'
 
 
 }

@@ -20,7 +20,7 @@ export default class EnemyPredator extends Phaser.GameObjects.Container {
         const width = enemyPredator.displayWidth
         const height = enemyPredator.displayHeight
 
-        body.setSize(width-30, height-70)
+        body.setSize(width-40, height-90)
         body.setOffset(-width * 0.5, -height )
 
 

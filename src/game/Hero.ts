@@ -18,11 +18,13 @@ export default class Hero extends Phaser.GameObjects.Container {
     private heroState = HeroState.Running
 
 
+
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y)
 
         this.hero = scene.add.sprite(0, 0, TextureKeys.RunningMan)
             .setOrigin(0.5, 1)
+
 
 
         this.hero.play(AnimationKeys.RunningManRun)
@@ -38,6 +40,7 @@ export default class Hero extends Phaser.GameObjects.Container {
         // get a CursorKeys instance
         this.cursors = scene.input.keyboard.createCursorKeys()
 
+
     }
     kill()
     {
@@ -52,7 +55,7 @@ export default class Hero extends Phaser.GameObjects.Container {
 
         const body = this.body as Phaser.Physics.Arcade.Body
         body.setAccelerationY(0)
-        body.setVelocity(1000, 0)
+        body.setVelocity(300, 0)
     }
 
     preUpdate() {
@@ -68,12 +71,13 @@ export default class Hero extends Phaser.GameObjects.Container {
                     if (body.blocked.down && this.jumptimer === 0) {
                         // jump is allowed to start
                         this.jumptimer = 1;
-                        body.setVelocityY(-270)
+                        body.setVelocityY(-330)
+
                         this.hero.play(AnimationKeys.RunningManJump, true)
                     } else if (this.jumptimer > 0 && this.jumptimer < 31) {
                         // keep jumping higher
                         ++this.jumptimer;
-                        body.setVelocityY(-270 - (this.jumptimer * 1));
+                        body.setVelocityY(-330 - (this.jumptimer * 1));
                     }
                 } else {
                     // jump button not being pressed, reset jump timer

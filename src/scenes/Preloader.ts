@@ -52,6 +52,12 @@ export default class Preloader extends Phaser.Scene {
             'characters//hero/jump.json'
         )
 
+        this.load.atlas(
+            TextureKeys.Prize,
+            'characters/coin/coin.png',
+            'characters//coin/coin.json'
+        )
+
         this.load.audio('sonido', '/audio/run.mp3');
 
     }
@@ -114,6 +120,20 @@ export default class Preloader extends Phaser.Scene {
             repeat: -1 // -1 to loop forever
         })
 
+        this.anims.create({
+            key: AnimationKeys.PrizeAnimation, // name of this animation
+
+            frames: this.anims.generateFrameNames('prize', {
+                start: 1,
+                end: 3,
+                prefix: 'coin_',
+                zeroPad: 1,
+                suffix: '.png'
+            }),
+            frameRate: 1,
+            repeat: -1 // -1 to loop forever
+        })
+
 
 
         this.anims.create({
@@ -140,7 +160,7 @@ export default class Preloader extends Phaser.Scene {
                 zeroPad: 1,
                 suffix: '.png'
             }),
-            frameRate: 5,
+            frameRate: 8,
             repeat: 0 // -1 to loop forever
         })
 

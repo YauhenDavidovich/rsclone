@@ -13,7 +13,8 @@ enum TextureKeys {
     EnemyDron = 'enemy_dron',
     RunningMan = 'hero_run',
     JumpingMan = 'hero_jump',
-    DeadMan = "hero_fall"
+    DeadMan = "hero_fall",
+    Prize = 'prize'
 }
 
 export default TextureKeys

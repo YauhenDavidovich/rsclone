@@ -15,6 +15,13 @@ export default class Game extends Phaser.Scene {
     private enemyBarreir!: EnemyBarreir
     private enemyPredator!: EnemyPredator
     private dron!: EnemyDron;
+    private prizes!: Phaser.Physics.Arcade.StaticGroup;
+    private scoreLabel!: Phaser.GameObjects.Text
+    private score = 0
+
+    init() {
+        this.score = 0
+    }
 
 
     constructor() {
@@ -50,52 +57,86 @@ export default class Game extends Phaser.Scene {
         const rightEdge = scrollX + this.scale.width
 
         // body variable with specific physics body type
-        const body = this.enemyPredator.body as
+        const bodyP = this.enemyPredator.body as
+            Phaser.Physics.Arcade.StaticBody
+
+        const bodyE = this.enemyBarreir.body as
             Phaser.Physics.Arcade.StaticBody
 
         // use the body's width
-        const width = body.width
-        if (this.enemyPredator.x + width < scrollX) {
+        const widthP = bodyP.width
+
+        if (this.enemyPredator.x + widthP < scrollX) {
             this.enemyPredator.x = Phaser.Math.Between(
-                rightEdge + width + 1000,
-                rightEdge + width + 3500
+                rightEdge + widthP + 2000,
+                rightEdge + widthP + 3500
+            )
+            this.enemyBarreir.x = Phaser.Math.Between(
+                rightEdge + widthP + 500,
+                rightEdge + widthP + 1500
             )
 
             // set the physics body's position
             // add body.offset.x to account for x offset
-            body.position.x = this.enemyPredator.x + body.offset.x
-            body.position.y = 450
+            bodyP.position.x = this.enemyPredator.x + bodyP.offset.x
+            bodyP.position.y = 450
+
+            bodyE.position.x = this.enemyBarreir.x + bodyE.offset.x
+            bodyE.position.y = 450
         }
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    private wrapDron()
-    {
+    private wrapDron() {
         const scrollX = this.cameras.main.scrollX
         const rightEdge = scrollX + this.scale.width
 
         const body = this.dron.body as Phaser.Physics.Arcade.StaticBody
 
         const width = body.width
-        if (this.dron.x + width < scrollX)
-        {
+        if (this.dron.x + width < scrollX) {
             this.dron.x = Phaser.Math.Between(rightEdge + width, rightEdge + width + 1000)
-            this.dron.y = Phaser.Math.Between(30, 80)
+            this.dron.y = Phaser.Math.Between(100, 300)
 
             body.position.x = this.dron.x + body.offset.x
             body.position.y = this.dron.y + 100
         }
     }
+
+    private spawnPrizes() {
+        // code to spawn prizes
+        this.prizes.children.each(child => {
+            const prize = child as Phaser.Physics.Arcade.Sprite
+            this.prizes.killAndHide(prize)
+            prize.body.enable = false
+        })
+
+        const scrollX = this.cameras.main.scrollX
+        const rightEdge = scrollX + this.scale.width
+
+        let x = rightEdge + 100
+
+        const numPrizes = Phaser.Math.Between(1, 40)
+
+        for (let i = 0; i < numPrizes; ++i) {
+            const prize = this.prizes.get(x, Phaser.Math.Between(100, this.scale.height - 300), TextureKeys.Prize) as Phaser.Physics.Arcade.Sprite
+            prize.play(AnimationKeys.PrizeAnimation)
+
+            prize.setVisible(true)
+
+            prize.setActive(true)
+
+            const body = prize.body as Phaser.Physics.Arcade.StaticBody
+            body.setCircle(body.width * 0.5)
+            body.enable = true
+
+            body.updateFromGameObject()
+
+            x += prize.width * 1.5 + 1500
+        }
+
+    }
+
 
     create() {
 
@@ -134,7 +175,11 @@ export default class Game extends Phaser.Scene {
         this.add.existing(this.enemyPredator)
 
 
-        const hero = new Hero(this, width * 0.5, height-30)
+        this.prizes = this.physics.add.staticGroup()
+        this.spawnPrizes()
+
+
+        const hero = new Hero(this, width * 0.5, height - 30)
         this.add.existing(hero)
 
 
@@ -176,7 +221,23 @@ export default class Game extends Phaser.Scene {
             this
         )
 
+        this.physics.add.overlap(
+            this.prizes,
+            hero,
+            this.handleCollectPrize,
+            undefined,
+            this
+        )
 
+        //scores display
+        this.scoreLabel = this.add.text(10, 10, `Score: ${this.score}`, {
+            fontSize: '24px',
+            color: 'red',
+            backgroundColor: 'white',
+            shadow: {fill: true, blur: 0, offsetY: 0},
+            padding: {left: 15, right: 15, top: 10, bottom: 10}
+        })
+            .setScrollFactor(0)
     }
 
     private handleOverlapBarrreir(
@@ -188,15 +249,29 @@ export default class Game extends Phaser.Scene {
         hero.kill()
     }
 
+    private handleCollectPrize(
+        obj1: Phaser.GameObjects.GameObject,
+        obj2: Phaser.GameObjects.GameObject,
+    ) {
+        // obj2 will be the prize
+        const prize = obj2 as Phaser.Physics.Arcade.Sprite
+
+        // use the group to hide it
+        this.prizes.killAndHide(prize)
+
+        //turn off the physics
+        prize.body.enable = false
+        this.score += 1
+        this.scoreLabel.text = `Score: ${this.score}`
+
+    }
+
 
     update(t: number, dt: number) {
         this.backgroundRoad.setTilePosition(this.cameras.main.scrollX)
 
         this.wrapEnemyPredator()
-        this.wrapEnemyBarreir()
-        // this.wrapEnemies()
+        // this.wrapEnemyBarreir()
         this.wrapDron()
-
-
     }
 }

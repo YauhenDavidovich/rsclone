@@ -19,12 +19,12 @@ export default class EnemyBarreir extends Phaser.GameObjects.Container {
         const width = enemyBarreir.displayWidth
         const height = enemyBarreir.displayHeight
 
-         body.setSize(width - 30, height-70)
+         body.setSize(width - 40, height-100)
         body.setOffset(-width * 0.5, -height )
 
 
          // reposition body
           body.position.x = this.x + body.offset.x
-          body.position.y = 450
+          body.position.y = 470
     }
 }
