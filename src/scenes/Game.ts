@@ -28,31 +28,8 @@ export default class Game extends Phaser.Scene {
         super(SceneKeys.Game)
     }
 
-    private wrapEnemyBarreir() {
-        const scrollX = this.cameras.main.scrollX
-        const rightEdge = scrollX + this.scale.width
 
-        // body variable with specific physics body type
-        const body = this.enemyBarreir.body as
-            Phaser.Physics.Arcade.StaticBody
-
-        // use the body's width
-        const width = body.width
-        if (this.enemyBarreir.x + width < scrollX) {
-            this.enemyBarreir.x = Phaser.Math.Between(
-                rightEdge + width,
-                rightEdge + width + 2000
-            )
-
-            // set the physics body's position
-            // add body.offset.x to account for x offset
-            body.position.x = this.enemyBarreir.x + body.offset.x
-            body.position.y = 450
-        }
-    }
-
-
-    private wrapEnemyPredator() {
+    private wrapEnemies() {
         const scrollX = this.cameras.main.scrollX
         const rightEdge = scrollX + this.scale.width
 
@@ -79,10 +56,10 @@ export default class Game extends Phaser.Scene {
             // set the physics body's position
             // add body.offset.x to account for x offset
             bodyP.position.x = this.enemyPredator.x + bodyP.offset.x
-            bodyP.position.y = 450
+            bodyP.position.y = 470
 
             bodyE.position.x = this.enemyBarreir.x + bodyE.offset.x
-            bodyE.position.y = 450
+            bodyE.position.y = 470
         }
     }
 
@@ -95,7 +72,7 @@ export default class Game extends Phaser.Scene {
 
         const width = body.width
         if (this.dron.x + width < scrollX) {
-            this.dron.x = Phaser.Math.Between(rightEdge + width, rightEdge + width + 1000)
+            this.dron.x = Phaser.Math.Between(rightEdge + width, rightEdge + width + 1500)
             this.dron.y = Phaser.Math.Between(100, 300)
 
             body.position.x = this.dron.x + body.offset.x
@@ -147,12 +124,14 @@ export default class Game extends Phaser.Scene {
 
         this.add.image(0, 0, TextureKeys.MainBackground).setOrigin(0)
             .setScrollFactor(0)
-        this.add.image(600, 110, TextureKeys.NewBorBackground).setOrigin(0)
-            .setScrollFactor(0.32)
-        this.add.image(1300, 110, TextureKeys.UrucheiBackground).setOrigin(0)
-            .setScrollFactor(0.32)
-        this.add.image(3000, 110, TextureKeys.UrucheiBackground).setOrigin(0)
-            .setScrollFactor(0.32)
+        this.add.image(0, 110, TextureKeys.NewBorBackground).setOrigin(0)
+            .setScrollFactor(0.15)
+        this.add.image(674, 110, TextureKeys.UrucheiBackground).setOrigin(0)
+            .setScrollFactor(0.15)
+        this.add.image(1685, 110, TextureKeys.BorisovskiBackground).setOrigin(0)
+            .setScrollFactor(0.15)
+        this.add.image(2285, 110, TextureKeys.DanaBackground).setOrigin(0)
+            .setScrollFactor(0.15)
 
 
         this.backgroundRoad = this.add.tileSprite(
@@ -179,7 +158,7 @@ export default class Game extends Phaser.Scene {
         this.spawnPrizes()
 
 
-        const hero = new Hero(this, width * 0.5, height - 30)
+        const hero = new Hero(this, width * 0.5 - 200, height - 30)
         this.add.existing(hero)
 
 
@@ -270,8 +249,7 @@ export default class Game extends Phaser.Scene {
     update(t: number, dt: number) {
         this.backgroundRoad.setTilePosition(this.cameras.main.scrollX)
 
-        this.wrapEnemyPredator()
-        // this.wrapEnemyBarreir()
+        this.wrapEnemies()
         this.wrapDron()
     }
 }

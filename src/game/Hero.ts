@@ -34,8 +34,8 @@ export default class Hero extends Phaser.GameObjects.Container {
 
 
         const body = this.body as Phaser.Physics.Arcade.Body
-        body.setSize(this.hero.width * 0.35, this.hero.height * 0.52)
-        body.setOffset(this.hero.width * -0.2, -this.hero.height + 200)
+        body.setSize(this.hero.width * 0.25, this.hero.height * 0.5)
+        body.setOffset(this.hero.width * -0.15, -this.hero.height + 200)
 
         // get a CursorKeys instance
         this.cursors = scene.input.keyboard.createCursorKeys()
