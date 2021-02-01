@@ -5,62 +5,63 @@ import AnimationKeys from "~/consts/AnimationKeys";
 
 export default class Preloader extends Phaser.Scene {
     private sonido: Phaser.Sound.BaseSound;
+
     constructor() {
         super(SceneKeys.Preloader)
     }
 
     preload() {
-        this.load.image(TextureKeys.MainBackground, 'city/bg_city_main.png')
-        this.load.image(TextureKeys.RoadBackground, 'city/bg_repeat_road.png')
-        this.load.image(TextureKeys.NewBorBackground, 'city/nb_bg.png')
-        this.load.image(TextureKeys.UrucheiBackground, 'city/uruchei_bg.png')
-        this.load.image(TextureKeys.BorisovskiBackground, 'city/borisov_bg.png')
-        this.load.image(TextureKeys.DanaBackground, 'city/dana_bg.png')
-
-        this.load.atlas(
-            TextureKeys.EnemyBarrerier,
-            'characters/enemy_barreir/barreir.png',
-            'characters/enemy_barreir/barreir.json'
-            )
-
-        this.load.atlas(
-            TextureKeys.EnemyPredator,
-            'characters/enemy_barreir/predator.png',
-            'characters/enemy_barreir/predator.json'
-        )
-
-        this.load.atlas(
-            TextureKeys.EnemyDron,
-            'characters/enemy_barreir/dron1.png',
-            'characters/enemy_barreir/dron1.json'
-        )
-
-
-        this.load.atlas(
-            TextureKeys.RunningMan,
-            'characters/hero/run.png',
-            'characters//hero/run.json'
-        )
-
-        this.load.atlas(
-            TextureKeys.DeadMan,
-            'characters/hero/fall.png',
-            'characters//hero/fall.json'
-        )
-
-        this.load.atlas(
-            TextureKeys.JumpingMan,
-            'characters/hero/jump.png',
-            'characters//hero/jump.json'
-        )
-
-        this.load.atlas(
-            TextureKeys.Prize,
-            'characters/coin/coin.png',
-            'characters//coin/coin.json'
-        )
-
-        this.load.audio('sonido', '/audio/run.mp3');
+        // this.load.image(TextureKeys.MainBackground, 'city/bg_city_main.png')
+        // this.load.image(TextureKeys.RoadBackground, 'city/bg_repeat_road.png')
+        // this.load.image(TextureKeys.NewBorBackground, 'city/nb_bg.png')
+        // this.load.image(TextureKeys.UrucheiBackground, 'city/uruchei_bg.png')
+        // this.load.image(TextureKeys.BorisovskiBackground, 'city/borisov_bg.png')
+        // this.load.image(TextureKeys.DanaBackground, 'city/dana_bg.png')
+        //
+        // this.load.atlas(
+        //     TextureKeys.EnemyBarrerier,
+        //     'characters/enemy_barreir/barreir.png',
+        //     'characters/enemy_barreir/barreir.json'
+        // )
+        //
+        // this.load.atlas(
+        //     TextureKeys.EnemyPredator,
+        //     'characters/enemy_barreir/predator.png',
+        //     'characters/enemy_barreir/predator.json'
+        // )
+        //
+        // this.load.atlas(
+        //     TextureKeys.EnemyDron,
+        //     'characters/enemy_barreir/dron1.png',
+        //     'characters/enemy_barreir/dron1.json'
+        // )
+        //
+        //
+        // this.load.atlas(
+        //     TextureKeys.RunningMan,
+        //     'characters/hero/run.png',
+        //     'characters//hero/run.json'
+        // )
+        //
+        // this.load.atlas(
+        //     TextureKeys.DeadMan,
+        //     'characters/hero/fall.png',
+        //     'characters//hero/fall.json'
+        // )
+        //
+        // this.load.atlas(
+        //     TextureKeys.JumpingMan,
+        //     'characters/hero/jump.png',
+        //     'characters//hero/jump.json'
+        // )
+        //
+        // this.load.atlas(
+        //     TextureKeys.Prize,
+        //     'characters/coin/coin.png',
+        //     'characters//coin/coin.json'
+        // )
+        //
+        // this.load.audio('sonido', '/audio/run.mp3');
 
     }
 
@@ -135,7 +136,6 @@ export default class Preloader extends Phaser.Scene {
             frameRate: 1,
             repeat: -1 // -1 to loop forever
         })
-
 
 
         this.anims.create({
