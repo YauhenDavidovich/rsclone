@@ -1,6 +1,47 @@
 import Phaser from 'phaser'
 import SceneKeys from '../consts/SceneKeys'
 import TextureKeys from "~/consts/TextureKeys";
+class TweenHelper {
+    static flashElement(scene, element, repeat = true, easing = 'Linear', overallDuration = 1500, visiblePauseDuration = 500) {
+        if (scene && element) {
+            const flashDuration = overallDuration - visiblePauseDuration / 2;
+
+            scene.tweens.timeline({
+                tweens: [
+                    {
+                        targets: element,
+                        duration: 0,
+                        alpha: 0,
+                        ease: easing
+                    },
+                    {
+                        targets: element,
+                        duration: flashDuration,
+                        alpha: 1,
+                        ease: easing
+                    },
+                    {
+                        targets: element,
+                        duration: visiblePauseDuration,
+                        alpha: 1,
+                        ease: easing
+                    },
+                    {
+                        targets: element,
+                        duration: flashDuration,
+                        alpha: 0,
+                        ease: easing,
+                        onComplete: () => {
+                            if (repeat === true) {
+                                this.flashElement(scene, element);
+                            }
+                        }
+                    }
+                ]
+            });
+        }
+    }
+}
 
 export default class PreloadScreen extends Phaser.Scene {
     private graphics!: Phaser.GameObjects.Graphics;
@@ -64,7 +105,11 @@ export default class PreloadScreen extends Phaser.Scene {
             'characters//coin/coin.json'
         )
 
-        this.load.audio('sonido', '/audio/run.mp3');
+        this.load.audio('main', '/audio/run.mp3');
+        this.load.audio('jump', '/audio/jump.wav');
+        this.load.audio('collect', '/audio/collect.mp3');
+        this.load.audio('lose', '/audio/lose.mp3');
+
 
 
         const progressBar = this.add.graphics();
@@ -131,16 +176,38 @@ export default class PreloadScreen extends Phaser.Scene {
             })
         }, this);
 
-        this.load.image('assets', 'start/banner.jpg');
-        for (let i = 0; i < 500; i++) {
-            this.load.image('assets' + i, 'start/banner.jpg');
-        }
+        this.load.image('assets1', 'start/banner.jpg');
+        this.load.image('assets2', 'start/logo-rs-school.svg');
+
     }
 
     create() {
-        const logo = this.add.image(400, 300, 'assets');
-        logo.scale = 0.3
+        const logo1 = this.add.image(400, 550, 'assets2');
+        logo1.scale = 0.3
+        const logo2 = this.add.image(400, 300, 'assets1');
+        logo2.scale = 0.3
 
+        const { width, height } = this.scale
+
+
+        const screenPlayText = this.add.text(width * 0.5, height * 0.65,  'Цiснi SPACE каб пачаць гульню', {
+            fontSize: '36px',
+            color: '#FFFFFF',
+            backgroundColor: '#000000',
+            shadow: { fill: true, blur: 0, offsetY: 0 },
+            padding: { left: 15, right: 15, top: 10, bottom: 10 }
+        })
+            .setOrigin(0.5)
+        TweenHelper.flashElement(this, screenPlayText);
+
+        const screenAuthor = this.add.text(width * 0.5, height * 0.75,  'created by Yauhen Davidovich in 2021', {
+            fontSize: '16px',
+            color: '#FFFFFF',
+            backgroundColor: '#000000',
+            shadow: { fill: true, blur: 0, offsetY: 0 },
+            padding: { left: 15, right: 15, top: 10, bottom: 10 }
+        })
+            .setOrigin(0.5)
 
     }
 }

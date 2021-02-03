@@ -3,6 +3,7 @@ import Phaser from 'phaser'
 import SceneKeys from '../consts/SceneKeys'
 
 export default class GameOver extends Phaser.Scene {
+
     constructor()
     {
         super(SceneKeys.GameOver)
@@ -15,7 +16,7 @@ export default class GameOver extends Phaser.Scene {
         const x = width * 0.5
         const y = height * 0.5
 
-        this.add.text(x, y,  'Press SPACE to Play Again', {
+        this.add.text(x, y,  'Цiснi SPACE каб згуляць зноў', {
             fontSize: '36px',
             color: '#FFFFFF',
             backgroundColor: '#000000',
@@ -23,6 +24,8 @@ export default class GameOver extends Phaser.Scene {
             padding: { left: 15, right: 15, top: 10, bottom: 10 }
         })
             .setOrigin(0.5)
+
+
 
 
 

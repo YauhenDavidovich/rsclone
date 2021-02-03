@@ -18,6 +18,11 @@ export default class Game extends Phaser.Scene {
     private prizes!: Phaser.Physics.Arcade.StaticGroup;
     private scoreLabel!: Phaser.GameObjects.Text
     private score = 0
+    private mainAudio!: Phaser.Sound.BaseSound;
+    private jumpAudio!: Phaser.Sound.BaseSound;
+    private collectAudio!: Phaser.Sound.BaseSound;
+    private fallAudio!: Phaser.Sound.BaseSound;
+
 
     init() {
         this.score = 0
@@ -79,6 +84,7 @@ export default class Game extends Phaser.Scene {
             body.position.y = this.dron.y + 100
         }
     }
+
 
     private spawnPrizes() {
         // code to spawn prizes
@@ -209,7 +215,7 @@ export default class Game extends Phaser.Scene {
         )
 
         //scores display
-        this.scoreLabel = this.add.text(10, 10, `Score: ${this.score}`, {
+        this.scoreLabel = this.add.text(10, 10, `Падабайкi: ${this.score}`, {
             fontSize: '24px',
             color: 'red',
             backgroundColor: 'white',
@@ -217,7 +223,14 @@ export default class Game extends Phaser.Scene {
             padding: {left: 15, right: 15, top: 10, bottom: 10}
         })
             .setScrollFactor(0)
+
+        //sounds
+        this.mainAudio = this.sound.add('main', { loop: true });
+        this.mainAudio.play()
+        this.collectAudio = this.sound.add('collect');
+        this.fallAudio = this.sound.add('lose');
     }
+
 
     private handleOverlapBarrreir(
         obj1: Phaser.GameObjects.GameObject,
@@ -225,7 +238,9 @@ export default class Game extends Phaser.Scene {
     ) {
         const hero = obj2 as Hero
 
+        this.fallAudio.play()
         hero.kill()
+        this.mainAudio.stop()
     }
 
     private handleCollectPrize(
@@ -237,11 +252,12 @@ export default class Game extends Phaser.Scene {
 
         // use the group to hide it
         this.prizes.killAndHide(prize)
+        this.collectAudio.play()
 
         //turn off the physics
         prize.body.enable = false
         this.score += 1
-        this.scoreLabel.text = `Score: ${this.score}`
+        this.scoreLabel.text = `Падабайкi: ${this.score}`
 
     }
 

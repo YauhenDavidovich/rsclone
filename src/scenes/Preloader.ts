@@ -4,7 +4,6 @@ import SceneKeys from "~/consts/SceneKeys";
 import AnimationKeys from "~/consts/AnimationKeys";
 
 export default class Preloader extends Phaser.Scene {
-    private sonido: Phaser.Sound.BaseSound;
 
     constructor() {
         super(SceneKeys.Preloader)
@@ -166,10 +165,6 @@ export default class Preloader extends Phaser.Scene {
             repeat: 0 // -1 to loop forever
         })
 
-
-        this.sonido = this.sound.add('sonido');
-        this.sonido.loop = true;
-        // this.sonido.play()
 
         this.scene.start(SceneKeys.Game)
     }
