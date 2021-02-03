@@ -15,7 +15,7 @@ export default class Hero extends Phaser.GameObjects.Container {
     private hero: Phaser.GameObjects.Sprite
     private jumptimer = 0;
     private heroState = HeroState.Running
-    private jumpAudio!: Phaser.Sound.BaseSound;
+
 
 
 
@@ -68,13 +68,12 @@ export default class Hero extends Phaser.GameObjects.Container {
                     if (body.blocked.down && this.jumptimer === 0) {
                         // jump is allowed to start
                         this.jumptimer = 1;
-                        body.setVelocityY(-310)
-
+                        body.setVelocityY(-330)
                         this.hero.play(AnimationKeys.RunningManJump, true)
                     } else if (this.jumptimer > 0 && this.jumptimer < 31) {
                         // keep jumping higher
                         ++this.jumptimer;
-                        body.setVelocityY(-310 - (this.jumptimer * 1));
+                        body.setVelocityY(-330 - (this.jumptimer * 1));
                     }
                 } else {
                     // jump button not being pressed, reset jump timer

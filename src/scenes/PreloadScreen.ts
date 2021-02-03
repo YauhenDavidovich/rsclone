@@ -45,7 +45,7 @@ class TweenHelper {
 
 export default class PreloadScreen extends Phaser.Scene {
     private graphics!: Phaser.GameObjects.Graphics;
-    private newGraphics: Phaser.GameObjects.Graphics;
+    private newGraphics!: Phaser.GameObjects.Graphics;
     private percentage!: number;
     private loadingText: any;
 
@@ -61,6 +61,9 @@ export default class PreloadScreen extends Phaser.Scene {
         this.load.image(TextureKeys.UrucheiBackground, 'city/uruchei_bg.png')
         this.load.image(TextureKeys.BorisovskiBackground, 'city/borisov_bg.png')
         this.load.image(TextureKeys.DanaBackground, 'city/dana_bg.png')
+        this.load.image(TextureKeys.LibraryBackground, 'city/library_bg.png')
+        this.load.image(TextureKeys.BatuBackground, 'city/batu_bg.png')
+        this.load.image(TextureKeys.KastruchnickBackground, 'city/kastruchnicki_bg.png')
 
         this.load.atlas(
             TextureKeys.EnemyBarrerier,
@@ -125,7 +128,7 @@ export default class PreloadScreen extends Phaser.Scene {
             text: 'Пачакай...',
             style: {
                 font: '20px monospace',
-                fill: '#ffffff'
+                color: '#ffffff'
             }
         });
         loadingText.setOrigin(0.5, 0.5);
@@ -136,7 +139,7 @@ export default class PreloadScreen extends Phaser.Scene {
             text: '0%',
             style: {
                 font: '18px monospace',
-                fill: '#ffffff'
+                color: '#ffffff'
             }
         });
         percentText.setOrigin(0.5, 0.5);
@@ -147,7 +150,7 @@ export default class PreloadScreen extends Phaser.Scene {
             text: '',
             style: {
                 font: '18px monospace',
-                fill: '#ffffff'
+                color: '#ffffff'
             }
         });
         assetText.setOrigin(0.5, 0.5);
@@ -170,10 +173,6 @@ export default class PreloadScreen extends Phaser.Scene {
             loadingText.destroy();
             percentText.destroy();
             assetText.destroy();
-            // this.scene.start(SceneKeys.Preloader)
-            this.input.keyboard.once('keydown-SPACE', () => {
-                this.scene.start(SceneKeys.Preloader)
-            })
         }, this);
 
         this.load.image('assets1', 'start/banner.jpg');
@@ -208,6 +207,10 @@ export default class PreloadScreen extends Phaser.Scene {
             padding: { left: 15, right: 15, top: 10, bottom: 10 }
         })
             .setOrigin(0.5)
+
+        this.input.keyboard.once('keydown-SPACE', () => {
+            this.scene.start(SceneKeys.Preloader)
+        })
 
     }
 }

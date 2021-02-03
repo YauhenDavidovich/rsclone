@@ -131,13 +131,22 @@ export default class Game extends Phaser.Scene {
         this.add.image(0, 0, TextureKeys.MainBackground).setOrigin(0)
             .setScrollFactor(0)
         this.add.image(0, 110, TextureKeys.NewBorBackground).setOrigin(0)
-            .setScrollFactor(0.25)
+            .setScrollFactor(0.45)
         this.add.image(674, 110, TextureKeys.UrucheiBackground).setOrigin(0)
-            .setScrollFactor(0.25)
+            .setScrollFactor(0.45)
         this.add.image(1685, 110, TextureKeys.BorisovskiBackground).setOrigin(0)
-            .setScrollFactor(0.25)
+            .setScrollFactor(0.45)
         this.add.image(2285, 110, TextureKeys.DanaBackground).setOrigin(0)
-            .setScrollFactor(0.25)
+            .setScrollFactor(0.45)
+        this.add.image(3466, 110, TextureKeys.LibraryBackground).setOrigin(0)
+            .setScrollFactor(0.45)
+        this.add.image(4002, 110, TextureKeys.BatuBackground).setOrigin(0)
+            .setScrollFactor(0.45)
+        this.add.image(4902, 110, TextureKeys.KastruchnickBackground).setOrigin(0)
+            .setScrollFactor(0.45)
+
+
+
 
 
         this.backgroundRoad = this.add.tileSprite(
