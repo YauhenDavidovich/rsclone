@@ -177,6 +177,7 @@ export default class PreloadScreen extends Phaser.Scene {
 
         this.load.image('assets1', 'start/banner.jpg');
         this.load.image('assets2', 'start/logo-rs-school.svg');
+        this.load.image('assets3', 'start/main_logo.png');
 
     }
 
@@ -184,7 +185,10 @@ export default class PreloadScreen extends Phaser.Scene {
         const logo1 = this.add.image(400, 550, 'assets2');
         logo1.scale = 0.3
         const logo2 = this.add.image(400, 300, 'assets1');
-        logo2.scale = 0.3
+        logo2.scale = 0.35
+
+        const logo3 = this.add.image(400, 100, 'assets3');
+        logo3.scale = 0.1
 
         const { width, height } = this.scale
 
