@@ -188,7 +188,7 @@ export default class PreloadScreen extends Phaser.Scene {
         logo2.scale = 0.35
 
         const logo3 = this.add.image(400, 100, 'assets3');
-        logo3.scale = 0.1
+        logo3.scale = 0.3
 
         const { width, height } = this.scale
 

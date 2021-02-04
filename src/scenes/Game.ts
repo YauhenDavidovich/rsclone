@@ -23,9 +23,14 @@ export default class Game extends Phaser.Scene {
     private collectAudio!: Phaser.Sound.BaseSound;
     private fallAudio!: Phaser.Sound.BaseSound;
 
+    private bestScoreLabel!: Phaser.GameObjects.Text;
+    private bestScore!: number;
+
+
 
     init() {
         this.score = 0
+        this.bestScore = parseInt(<string>localStorage.getItem('score')) || 0
     }
 
 
@@ -131,19 +136,19 @@ export default class Game extends Phaser.Scene {
         this.add.image(0, 0, TextureKeys.MainBackground).setOrigin(0)
             .setScrollFactor(0)
         this.add.image(0, 110, TextureKeys.NewBorBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(674, 110, TextureKeys.UrucheiBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(1685, 110, TextureKeys.BorisovskiBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(2285, 110, TextureKeys.DanaBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(3466, 110, TextureKeys.LibraryBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(4002, 110, TextureKeys.BatuBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
         this.add.image(4902, 110, TextureKeys.KastruchnickBackground).setOrigin(0)
-            .setScrollFactor(0.45)
+            .setScrollFactor(0.25)
 
 
 
@@ -233,6 +238,16 @@ export default class Game extends Phaser.Scene {
         })
             .setScrollFactor(0)
 
+
+        this.bestScoreLabel = this.add.text(width -175, 10, `Рэкорд: ${this.bestScore}`, {
+            fontSize: '24px',
+            color: 'red',
+            backgroundColor: 'white',
+            shadow: {fill: true, blur: 0, offsetY: 0},
+            padding: {left: 15, right: 15, top: 10, bottom: 10}
+        })
+            .setScrollFactor(0)
+
         //sounds
         this.mainAudio = this.sound.add('main', { loop: true });
         this.mainAudio.play()
@@ -266,6 +281,11 @@ export default class Game extends Phaser.Scene {
         //turn off the physics
         prize.body.enable = false
         this.score += 1
+        if (this.score > this.bestScore){
+            this.bestScore = this.score
+            localStorage.setItem('score', String(this.score))
+            this.bestScoreLabel.text = `Рэкорд: ${this.bestScore}`
+            }
         this.scoreLabel.text = `Падабайкi: ${this.score}`
 
     }
