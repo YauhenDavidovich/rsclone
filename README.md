@@ -3,6 +3,7 @@
 ## Overview
 This is the source code for an infinite runner starting point in Phaser 3 with TypeScript.  
 This game is a project for the "rsclone" assignment in the RSSchool 2020Q3 course.   
+I used Phaser 3 + Parcel Template from [here](https://github.com/ourcade/phaser3-parcel-template) with ready bulding tools.
 I drew all the textures, sprites, and character animations for the project from scratch.  
 As the background with the paralax effect were used stylized images of Minsk also depicted by me in CorelDraw.
 
