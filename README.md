@@ -1,7 +1,7 @@
 # Freedom Runner 
 
 ## Overview
-This is the source code for an infinite runner starting point in Phaser 3 with TypeScript.  
+This is the source code for an infinite runner with Phaser 3 and TypeScript.  
 This game is a project for the "rsclone" assignment in the RSSchool 2020Q3 course.   
 I used Phaser 3 + Parcel Template from [here](https://github.com/ourcade/phaser3-parcel-template) with ready bulding tools.
 I drew all the textures, sprites, and character animations for the project from scratch.  
