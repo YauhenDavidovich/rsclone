@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "barreir.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 223,
+				"h": 1168
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "barreir_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 221,
+						"h": 290
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 221,
+						"h": 290
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 221,
+						"h": 290
+					}
+				},
+				{
+					"filename": "barreir_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 221,
+						"h": 290
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 221,
+						"h": 290
+					},
+					"frame": {
+						"x": 1,
+						"y": 293,
+						"w": 221,
+						"h": 290
+					}
+				},
+				{
+					"filename": "barreir_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 221,
+						"h": 290
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 221,
+						"h": 290
+					},
+					"frame": {
+						"x": 1,
+						"y": 585,
+						"w": 221,
+						"h": 290
+					}
+				},
+				{
+					"filename": "barreir_4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 221,
+						"h": 290
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 221,
+						"h": 290
+					},
+					"frame": {
+						"x": 1,
+						"y": 877,
+						"w": 221,
+						"h": 290
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:ddd428a4755872f662ac5938642ecf15:b809b4c2cf8d2849da0dc615cf1db079:08bec385e7dd5a7ac90ad1af650d3b81$"
+	}
+}
